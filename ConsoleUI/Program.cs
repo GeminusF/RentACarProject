@@ -16,6 +16,21 @@ namespace ConsoleUI
 
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            carManager.Add(new Car 
+            {
+                Id = 8,
+                BrandId = 1,
+                ColorId = 7,
+                DailyPrice = 0,
+                Description = "f",
+                ModelYear = "1990"
+            });
+
+
+
+
 
 
             //BrandAdd(brandManager);
