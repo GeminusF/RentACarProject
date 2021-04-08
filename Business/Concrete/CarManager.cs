@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -20,38 +22,41 @@ namespace Business.Concrete
             _car = car;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if (car.Description.Length>2 && car.DailyPrice>0)
             {
                 _car.Add(car);
+                return new SuccessResult(Messages.InvalidCarAdded);
             }
-            else
-            {
-                Console.WriteLine("Araba ismi minimum 2 karakter olmalıdır" +
-                                 "Araba günlük fiyatı 0'dan büyük olmalıdır.");
-            }
-            
+
+            return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _car.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _car.GetByAll();
+            if (DateTime.Now.Hour == 22)
+            {
+                return new SuccessDataResult<List<Car>>(_car.GetByAll(), Messages.CarListed);
+            }
+            return new ErrorDataResult<List<Car>>(_car.GetByAll(), Messages.InvalidCarListed);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _car.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _car.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_car.GetCarDetails());
         }
     }
 }

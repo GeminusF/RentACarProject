@@ -16,8 +16,8 @@ namespace ConsoleUI
 
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            
-            
+
+
             //BrandAdd(brandManager);
 
             //BrandUpdate(brandManager);
@@ -30,10 +30,7 @@ namespace ConsoleUI
 
             //Add(carManager);
 
-            foreach (var c in carManager.GetCarDetails())
-            {
-                Console.WriteLine(c.CarName + "/" + c.BrandName + "/" + c.ColorName + "/" + c.DailyPrice);
-            }
+
         }
 
         private static void BrandDelete(BrandManager brandManager)
@@ -53,14 +50,14 @@ namespace ConsoleUI
 
         private static void Add(CarManager carManager)
         {
-            carManager.Add(new Car
+            carManager.Add(new Car 
             {
-                Id = 5,
+                Id = 7,
                 BrandId = 1,
-                ColorId = 5,
-                DailyPrice = 1400,
-                Description = "Tesla",
-                ModelYear = "2020"
+                ColorId = 7,
+                DailyPrice = 100,
+                Description = "zapi",
+                ModelYear = "1990"
             });
         }
 
