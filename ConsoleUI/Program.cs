@@ -18,16 +18,24 @@ namespace ConsoleUI
 
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
-            carManager.Add(new Car 
-            {
-                Id = 8,
-                BrandId = 1,
-                ColorId = 7,
-                DailyPrice = 0,
-                Description = "f",
-                ModelYear = "1990"
-            });
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
+            //carManager.Add(new Car 
+            //{
+            //    Id = 8,
+            //    BrandId = 1,
+            //    ColorId = 7,
+            //    DailyPrice = 0,
+            //    Description = "f",
+            //    ModelYear = "1990"
+            //});
+
+            rentalManager.Add(new Rental 
+            { Id = 1 , 
+              CardId = 1 ,
+              CustomerId = 1 ,
+              RentDate = "4.9.2021",
+              ReturnDate = "4.12.2021"});
 
 
 
