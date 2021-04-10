@@ -3,6 +3,7 @@ using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleUI
 {
@@ -20,7 +21,18 @@ namespace ConsoleUI
 
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            //carManager.Add(new Car 
+            brandManager.Add(new Brand { Id = 2 , Name = "Jaguar"});
+
+ 
+
+            //rentalManager.Add(new Rental 
+            //{ Id = 1 , 
+            //  CardId = 1 ,
+            //  CustomerId = 1 ,
+            //  RentDate = "4.9.2021",
+            //  ReturnDate = "4.12.2021"});
+
+            //var result = carManager.Add(new Car
             //{
             //    Id = 8,
             //    BrandId = 1,
@@ -29,15 +41,6 @@ namespace ConsoleUI
             //    Description = "f",
             //    ModelYear = "1990"
             //});
-
-            rentalManager.Add(new Rental 
-            { Id = 1 , 
-              CardId = 1 ,
-              CustomerId = 1 ,
-              RentDate = "4.9.2021",
-              ReturnDate = "4.12.2021"});
-
-
 
 
 
@@ -68,7 +71,7 @@ namespace ConsoleUI
 
         private static void BrandAdd(BrandManager brandManager)
         {
-            brandManager.Add(new Brand { Id = 2, Name = "bmw" });
+            brandManager.Add(new Brand { Id = 1, Name = "BMW" });
         }
 
         private static void Add(CarManager carManager)

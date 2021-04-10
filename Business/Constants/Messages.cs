@@ -18,6 +18,10 @@ namespace Business.Constants
 
         public static string CarListed = "Araclar listelendi";
 
+        public static string CarListedByBrandId = "Araclar markalarina gore listelendi";
+
+        public static string CarListedByColorId = "Araclar renklerine gore listelendi";
+
         public static string InvalidCarListed = "Server bakimda";
 
         public static string BrandAdded = "Marka eklendi";
@@ -53,6 +57,8 @@ namespace Business.Constants
         public static string RentalUpdated = "Kiralam guncellendi";
 
         public static string RentalListed = "Kiralama listelendi";
+
+        public static string RentalUndeliveredCar = "Kiralanmis arac teslim edilmemiş";
 
         public static string UserAdded = "Kullanci eklendi";
 

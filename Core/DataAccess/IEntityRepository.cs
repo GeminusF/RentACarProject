@@ -16,5 +16,6 @@ namespace Core.DataAccess
         void Delete(T entity);
         T GetCarsByBrandId(Expression<Func<T, bool>> filter);
         T GetCarsByColorId(Expression<Func<T, bool>> filter);
+        T Get(Expression<Func<T, bool>> filter);
     }
 }
