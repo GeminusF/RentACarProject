@@ -68,5 +68,16 @@ namespace Business.Constants
 
         public static string UserListed = "Kullanici listelendi";
 
+        public static string CarImageAdded = "Arac fotosu eklendi";
+        
+        public static string CarImageDeleted = "Arac fotosu silindi";
+        
+        public static string CarImageUpdated = "Arac fotosu guncellendi";
+
+        public static string CarImageListed = "Arac fotosu listelendi";
+
+        public static string CarImageLimit = "Aracin maks 5 fotosu ola bilir";
+
+        public static string ImageGetByCarId = "Aracin id gore fotosu listelendi";
     }
 }
