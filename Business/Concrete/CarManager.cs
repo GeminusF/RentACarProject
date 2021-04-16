@@ -2,6 +2,9 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results;
@@ -28,6 +31,8 @@ namespace Business.Concrete
 
         [SecuredOperation("product.add ,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
+        //[PerformanceAspect(5)]
         public IResult Add(Car car)
         {
             _car.Add(car);
@@ -47,6 +52,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             //if (DateTime.Now.Hour == 22)
@@ -57,6 +63,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Add")]
         public IResult Update(Car car)
         {
             _car.Update(car);
@@ -76,6 +83,19 @@ namespace Business.Concrete
         public IDataResult<Car> GetByColorId(int id)
         {
             return new SuccessDataResult<Car>(_car.GetCarsByColorId(c => c.Id == id),Messages.CarListedByColorId);
+        }
+
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            Add(car);
+            if (car.DailyPrice < 10)
+            {
+                throw new Exception("");
+            }
+            Add(car);
+
+            return null;
         }
     }
 }
