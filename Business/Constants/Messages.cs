@@ -79,5 +79,19 @@ namespace Business.Constants
         public static string CarImageLimit = "Aracin maks 5 fotosu ola bilir";
 
         public static string ImageGetByCarId = "Aracin id gore fotosu listelendi";
+
+        public static string AuthorizationDenied = "Yetkiniz yok";
+
+        public static string UserRegistered = "Kullanici kayit oldu";
+
+        public static string UserNotFound = "Kullanici bulunamadi";
+
+        public static string PasswordError = "Sifre hatali";
+
+        public static string SuccessfulLogin = "Basarili giris";
+
+        public static string UserAlreadyExists = "Kullanici mevcut";
+
+        public static string AccessTokenCreated = " Tokeni olusturuldu";
     }
 }
