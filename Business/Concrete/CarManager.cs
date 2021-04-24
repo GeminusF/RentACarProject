@@ -59,7 +59,7 @@ namespace Business.Concrete
             //{
             //    return new SuccessDataResult<List<Car>>(_car.GetByAll(), Messages.CarListed);
             //}
-            return new SuccessDataResult<List<Car>>(_car.GetByAll(), Messages.CarListed);
+            return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.CarListed);
         }
 
         [ValidationAspect(typeof(CarValidator))]
@@ -75,14 +75,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_car.GetCarDetails());
         }
 
-        public IDataResult<Car> GetByBrandId(int id)
+        public IDataResult<List<Car>> GetByBrandId(int id)
         {
-           return new SuccessDataResult<Car>(_car.GetCarsByBrandId(c => c.Id == id), Messages.CarListedByBrandId);
+           return new SuccessDataResult<List<Car>>(_car.GetAll(c => c.BrandId == id), Messages.CarListedByBrandId);
         }
 
-        public IDataResult<Car> GetByColorId(int id)
+        public IDataResult<List<Car>> GetByColorId(int id)
         {
-            return new SuccessDataResult<Car>(_car.GetCarsByColorId(c => c.Id == id),Messages.CarListedByColorId);
+            return new SuccessDataResult<List<Car>>(_car.GetAll(c => c.ColorId == id),Messages.CarListedByColorId);
         }
 
         [TransactionScopeAspect]

@@ -34,7 +34,7 @@ namespace Business.Concrete
 
         public IDataResult<Rental> CheckReturnDate(int carId)
         {
-            List<Rental> result = _rentalDal.GetByAll(x => x.CarId == carId && x.ReturnDate == null);
+            List<Rental> result = _rentalDal.GetAll(x => x.CarId == carId && x.ReturnDate == null);
             if (result.Count > 0) return new ErrorDataResult<Rental>(Messages.RentalUndeliveredCar);
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.CarId == carId));
         }
@@ -47,7 +47,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetByAll(), Messages.RentalListed);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalListed);
         }
 
         public IDataResult<Rental> GetById(int id)

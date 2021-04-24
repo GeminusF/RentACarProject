@@ -49,13 +49,13 @@ namespace Business.Concrete
 
         public IDataResult<List<CarImage>> GetAll()
         {
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetByAll(), Messages.CarImageListed);
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(), Messages.CarImageListed);
 
         }
 
         public IDataResult<List<CarImage>> GetByCarId(int id)
         {
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetByAll(c => c.CarId == id), Messages.ImageGetByCarId);
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == id), Messages.ImageGetByCarId);
         }
 
         public IResult Update(IFormFile file, CarImage carImage)
@@ -68,7 +68,7 @@ namespace Business.Concrete
 
         private IResult CheckOfImageCount(int id)
         {
-            var carImageCount = _carImageDal.GetByAll(p => p.CarId == id).Count;
+            var carImageCount = _carImageDal.GetAll(p => p.CarId == id).Count;
             if (carImageCount >= 5)
             {
                 return new ErrorResult(Messages.CarImageLimit);
