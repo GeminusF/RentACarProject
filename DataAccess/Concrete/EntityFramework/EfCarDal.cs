@@ -31,6 +31,26 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.ToList();
             }
         }
+
+        public List<CarDetailDto> GetCarDetailsById(int carId)
+        {
+            using (NorthwindContext context = new NorthwindContext())
+            {
+                var result = from c in context.Cars 
+                             join cd in context.Cars on c.Id equals carId
+                             join b in context.Brands on c.BrandId equals b.Id
+                             join cc in context.Colors on c.ColorId equals cc.Id
+                            
+                             select new CarDetailDto
+                             {
+                                 CarName = c.Description,
+                                 BrandName = b.Name,
+                                 ColorName = cc.Name,
+                                 DailyPrice = c.DailyPrice
+                             };
+                return result.ToList();    
+            }
+        }
     }
 
 }

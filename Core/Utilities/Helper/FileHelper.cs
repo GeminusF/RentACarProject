@@ -46,7 +46,7 @@ namespace Core.Utilities.Helper
 
             public static IResult Delete(string path)
             {
-                path = Environment.CurrentDirectory + @"\wwwroot\Images\" + path;
+                path = Environment.CurrentDirectory + @"\wwwroot\Image\" + path;
                 File.Delete(path);
                 return new SuccessResult();
             }
@@ -55,7 +55,7 @@ namespace Core.Utilities.Helper
             {
                 FileInfo fileInfo = new FileInfo(file.FileName);
                 string fileExtension = fileInfo.Extension;
-                string path2 = Environment.CurrentDirectory + @"\wwwroot\Images\";
+                string path2 = Environment.CurrentDirectory + @"\wwwroot\Image\";
                 string newFilePath = Guid.NewGuid().ToString("") + fileExtension;
                 string result = $@"{path2}\{newFilePath}";
                 return (result, $"\\Image\\{newFilePath}");

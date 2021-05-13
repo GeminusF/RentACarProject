@@ -102,5 +102,10 @@ namespace DataAccess.Concrete
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.Description = car.Description;
         }
+
+        public List<CarDetailDto> GetCarDetailsById(int carId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
